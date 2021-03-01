@@ -1,0 +1,20 @@
+#patient {
+  font-family: Monaco, monospace;
+  white-space: pre;
+  font-size: 13px;
+  height: 30vh;
+  overflow: scroll;
+  border: 1px solid #ccc;
+}
+#allergies {
+  font-family: Monaco, monospace;
+  white-space: pre;
+  font-size: 13px;
+  height: 30vh;
+  overflow: scroll;
+  border: 1px solid #ccc;
+}
+
+#error{
+ color: red;
+}

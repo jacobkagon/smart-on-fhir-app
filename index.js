@@ -2,9 +2,9 @@ FHIR.oauth2
   .ready()
   .then(function (client) {
     client.patient.read().then(
-      function (pt) {
+      function (patient) {
         document.getElementById("patient").innerText = JSON.stringify(
-          pt,
+          patient,
           null,
           4
         );
@@ -24,7 +24,6 @@ FHIR.oauth2
         if (!data.entry || !data.entry.length) {
           throw new Error("No allergies found for the selected patient");
         }
-        return data.entry;
       })
 
       .then(

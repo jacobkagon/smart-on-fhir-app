@@ -6,18 +6,9 @@
    
     <script src="https://cdn.jsdelivr.net/npm/fhirclient/build/fhir-client.js"></script>
     <script src="index.js"></script>
+    <link rel="stylesheet" href="index.css">
     
-    <style>
-      #patient,
-      #allergies {
-        font-family: Monaco, monospace;
-        white-space: pre;
-        font-size: 13px;
-        height: 30vh;
-        overflow: scroll;
-        border: 1px solid #ccc;
-      }
-    </style>
+    
   </head>
   <body>
     <h4>Current Patient</h4>
@@ -25,50 +16,6 @@
     <br />
     <h4>Allergies</h4>
     <div id="allergies">Loading...</div>
-    <!-- <script type="text/javascript">
-      FHIR.oauth2
-        .ready()
-        .then(function (client) {
-          client.patient.read().then(
-            function (pt) {
-              document.getElementById("patient").innerText = JSON.stringify(
-                pt,
-                null,
-                4
-              );
-            },
-            function (error) {
-              document.getElementById("patient").innerText = error.stack;
-            }
-          );
-
-          client
-            .request("/AllergyIntolerance?patient=" + client.patient.id, {
-              resolveReferences: ["allergyIntoleranceReference"],
-              graph: true,
-            })
-
-            .then(function (data) {
-              if (!data.entry || !data.entry.length) {
-                throw new Error("No allergies found for the selected patient");
-              }
-              return data.entry;
-            })
-
-            .then(
-              function (allergies) {
-                document.getElementById("allergies").innerText = JSON.stringify(
-                  allergies,
-                  null,
-                  4
-                );
-              },
-              function (error) {
-                document.getElementById("allergies").innerText = error.stack;
-              }
-            );
-        })
-        .catch(console.error);
-    </script> -->
+    
   </body>
 </html>
