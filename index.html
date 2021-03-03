@@ -5,7 +5,17 @@
     <title>SMART on FHIR App</title>
 
     <script src="https://cdn.jsdelivr.net/npm/fhirclient/build/fhir-client.js"></script>
-
+    <style>
+      #allergies,
+      #patient {
+        font-family: Monaco, monospace;
+        white-space: pre;
+        font-size: 13px;
+        height: 30vh;
+        overflow: scroll;
+        border: 1px solid #ccc;
+      }
+    </style>
     <link rel="stylesheet" href="index.css" />
   </head>
   <body>
@@ -18,7 +28,6 @@
       FHIR.oauth2
         .ready()
         .then(function (client) {
-         
           client.patient.read().then(
             function (pt) {
               document.getElementById("patient").innerText = JSON.stringify(
@@ -32,24 +41,19 @@
             }
           );
 
-        
           client
             .request("/AllergyIntolerance?patient=" + client.patient.id, {
               resolveReferences: ["allergyReference"],
               graph: true,
             })
 
-            
             .then(function (data) {
               if (!data.entry || !data.entry.length) {
-                throw new Error(
-                  "No allergies found for the selected patient"
-                );
+                throw new Error("No allergies found");
               }
               return data.entry;
             })
 
-           
             .then(
               function (allergies) {
                 document.getElementById("allergies").innerText = JSON.stringify(
