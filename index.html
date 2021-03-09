@@ -16,7 +16,7 @@
         border: 1px solid #ccc;
       }
     </style>
-    <link rel="stylesheet" href="index.css" />
+   
   </head>
   <body>
     <h4>Current Patient</h4>
@@ -31,9 +31,10 @@
           client.patient.read().then(
             function (pt) {
               document.getElementById("patient").innerText = JSON.stringify(
-                pt,
+                pt.name[0].prefix.join(" ")  + " " + pt.name[0].given.join(" ") + " " + pt.name[0].family,
                 null,
-                4
+                4,
+                console.log(pt.name[0].prefix.join(" ")  + " " + pt.name[0].given.join(" ") + " " + pt.name[0].family )
               );
             },
             function (error) {
@@ -57,9 +58,10 @@
             .then(
               function (allergies) {
                 document.getElementById("allergies").innerText = JSON.stringify(
-                  allergies,
+                  allergies[0].resource.code.text,
                   null,
-                  4
+                  4,
+                  
                 );
               },
               function (error) {
